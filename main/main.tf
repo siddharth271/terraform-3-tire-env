@@ -15,3 +15,12 @@ module "vpc" {
   map_public_ip_on_launch      = "${var.map_public_ip_on_launch}"
 }
 
+
+module "instances" {
+  name                         = "${var.vpc_name}"
+  source                       = "../modules/instances"
+  instance_type                = "${var.instance_type}"
+  ami                          = "${var.ami}"
+  subnet_id                    = module.vpc.private_subnet_ids[0]
+  security_groups              = [module.vpc.app_sg_id]
+}

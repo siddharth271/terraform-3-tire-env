@@ -35,3 +35,12 @@ variable "vpc-location" {
 variable "map_public_ip_on_launch" {
   type = bool
 }
+
+variable "instance_type" {
+  type = string
+  default = ""
+}
+
+variable "ami" {
+  default = ""
+}
